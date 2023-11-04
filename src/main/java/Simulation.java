@@ -14,9 +14,8 @@ public class Simulation {
     }
 
     public void runSimulation(){
-        // loop? a MILLION TIMES???? -- use numberOfThrows
-        // randomly choose a number between the range for bins
-        // increment said number
+        // IT IS UNIFORM DISTRIBUTION
+        // FIGURE OUT HOW TO MAKE IT NORMAL
         Random random = new Random();
         int binToIncrement;
 
