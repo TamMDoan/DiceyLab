@@ -17,4 +17,8 @@ public class Bins {
     public void incrementBins(int binToIncrement){
         this.bins[binToIncrement - this.start]++;
     }
+
+    public int binLength(){
+        return stop - start + 1;
+    }
 }

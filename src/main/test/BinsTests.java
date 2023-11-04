@@ -36,5 +36,15 @@ public class BinsTests {
         Assert.assertEquals(expected, bins.getBin(4));
     }
 
+    @Test
+    public void testBinLength(){
+        int start = 3;
+        int stop = 14;
+        Bins bins = new Bins(start, stop);
+
+        int expected = stop - start + 1;
+
+        Assert.assertEquals(expected, bins.binLength());
+    }
 
 }
