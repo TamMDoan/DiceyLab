@@ -35,4 +35,6 @@ public class BinsTests {
 
         Assert.assertEquals(expected, bins.getBin(4));
     }
+
+
 }
