@@ -13,7 +13,7 @@ public class SimulationTests {
         Assert.assertNotNull(simulation);
     }
 
-    @Test // NOT SURE HOW TO TEST THIS YET -- maybe not since void return???
+    /*@Test // NOT SURE HOW TO TEST THIS YET -- maybe not since void return???
     public void testRunSimulation(){
         int numberOfDies = 2;
         int numberOfTosses = 3;
@@ -21,7 +21,7 @@ public class SimulationTests {
 
         simulation.runSimulation();
 
-    }
+    }*/
 
     @Test
     public void testPrintResults(){

@@ -18,15 +18,24 @@ public class Simulation {
         // FIGURE OUT HOW TO MAKE IT NORMAL
         Random random = new Random();
         int binToIncrement;
+        int dice1;
+        int dice2;
 
         for(int i = 0; i < numberOfThrows; i++){
-            binToIncrement = random.nextInt(((numberOfDies * 6) - numberOfDies +1)) + numberOfDies;
+                // .random returns a number between [0, 1)
+                // multiply by 6, you'll get number between [0, 6)
+                // cast to int -> [0, 5]
+                // add 1 -> [1, 6]
+            dice1 = (int) (Math.random()*6) + 1;
+            dice2 = (int) (Math.random()*6) + 1;
+            binToIncrement = dice1 + dice2;
             bins.incrementBins(binToIncrement);
         }
     }
 
     public void printResults(){
         int binNumber;
+        System.out.println(String.format("***\nSimulation of %d dice tossed for %d times.\n***\n", numberOfDies, numberOfThrows));
         for(int i = 0; i < bins.binLength(); i++){
             binNumber = numberOfDies + i;
             String str = String.format("%2d : %8d: %1.2f ", binNumber, bins.getBin(binNumber), (double) bins.getBin(binNumber)/numberOfThrows);
