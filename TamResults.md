@@ -1,3 +1,4 @@
+results
 ***
 Simulation of 2 dice tossed for 1000000 times.
 ***
@@ -13,3 +14,4 @@ Simulation of 2 dice tossed for 1000000 times.
 10 :    83078: 0.08 ********
 11 :    55486: 0.06 *****
 12 :    27984: 0.03 **
+
