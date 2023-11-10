@@ -1,16 +1,28 @@
+import java.util.Random;
+
 public class Dice {
 
-    private int sides;
+    int numberOfDice;
 
-    public Dice(int sides){
-        this.sides = sides;
+    public Dice(int numberOfDice) {
+        this.numberOfDice = numberOfDice;
     }
 
-    public int tossAndSum(){
-        return 0;
+    // create method tossAndSum()
+    // get the sum of the dice
+    // return that sum
+    public Integer tossAndSum(){
+        Integer sum = 0;
+        Random random = new Random();
+
+        for(int i = 0; i < numberOfDice; i++){
+            sum += random.nextInt(6) + 1;
+        }
+
+        return sum;
+
     }
 
-    public int getSides(){
-        return sides;
-    }
+
+
 }

@@ -1,52 +1,48 @@
-import java.util.Random;
-
 public class Simulation {
+
     int numberOfDies;
-    int numberOfThrows;
+    int numberOfTosses;
 
-    Bins bins;
-
-    public Simulation(int numberOfDies, int numberOfThrows){
+    // create constructor(int numberOfDies, int numberOfTosses)
+    public Simulation(int numberOfDies, int numberOfTosses){
         this.numberOfDies = numberOfDies;
-        this.numberOfThrows = numberOfThrows;
-        this.bins = new Bins(numberOfDies, numberOfDies*6);
-
+        this.numberOfTosses = numberOfTosses;
     }
 
+    // create runSimulation method
+    // use the values in constructor
+    // to simulate the toss throwing
     public void runSimulation(){
-        // IT IS UNIFORM DISTRIBUTION
-        // FIGURE OUT HOW TO MAKE IT NORMAL
-        Random random = new Random();
-        int binToIncrement;
-        int dice1;
-        int dice2;
+        Dice dice = new Dice(this.numberOfDies);
+        Bins bins = new Bins(this.numberOfDies, this.numberOfDies * 6);
 
-        for(int i = 0; i < numberOfThrows; i++){
-                // .random returns a number between [0, 1)
-                // multiply by 6, you'll get number between [0, 6)
-                // cast to int -> [0, 5]
-                // add 1 -> [1, 6]
-            dice1 = (int) (Math.random()*6) + 1;
-            dice2 = (int) (Math.random()*6) + 1;
-            binToIncrement = dice1 + dice2;
-            bins.incrementBins(binToIncrement);
+        for(int i = 0; i < this.numberOfTosses; i++){
+            bins.incrementBin(dice.tossAndSum());
         }
+
+        // to see if our thing is working
+//        for(int i = 2; i <= numberOfDies * 6; i++){
+//            System.out.println("Value at bin number " + i + ": " +bins.getBin(i));
+//        }
+
+        printResults(bins);
+
     }
 
-    public void printResults(){
+    // printResults
+    public void printResults(Bins bins) {
         int binNumber;
-        System.out.println(String.format("***\nSimulation of %d dice tossed for %d times.\n***\n", numberOfDies, numberOfThrows));
-        for(int i = 0; i < bins.binLength(); i++){
+        int lengthOfBin = numberOfDies * 6 - numberOfDies + 1;
+        System.out.println(String.format("***\nSimulation of %d dice tossed for %d times.\n***\n", numberOfDies, numberOfTosses));
+        for (int i = 0; i < lengthOfBin; i++) {
             binNumber = numberOfDies + i;
-            String str = String.format("%2d : %8d: %1.2f ", binNumber, bins.getBin(binNumber), (double) bins.getBin(binNumber)/numberOfThrows);
+            String str = String.format("%2d : %8d: %1.2f ", binNumber, bins.getBin(binNumber), (double) bins.getBin(binNumber) / numberOfTosses);
             // take bins.getBins(#)/numberOfThrows, floor it, and that's how many stars you need to add
             // but how to add?
-            double repeated = (double) bins.getBin(binNumber) / numberOfThrows * 100;
+            double repeated = (double) bins.getBin(binNumber) / numberOfTosses * 100;
             String stars = "*".repeat((int) repeated);
             System.out.println(str + stars);
         }
     }
-
-
 
 }

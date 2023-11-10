@@ -1,24 +1,31 @@
 
 public class Bins {
-    int start;
-    int stop;
-    int[] bins;
 
-    public Bins(int start, int stop){
-        this.start = start;
-        this.stop = stop;
-        this.bins = new int[stop - start + 1];
+    int min;
+    int max;
+
+    int[] possibleValues;
+
+    public Bins(int min, int max) {
+        this.min = min;
+        this.max = max;
+        possibleValues = new int[max - min + 1]; // size 11
     }
 
-    public int getBin(int number){
-        return this.bins[number - this.start];
+
+    // create getBin(int binNumber)
+    // find the value at binnumber
+    // return value
+    public Integer getBin(int binNumber){
+        return this.possibleValues[binNumber - this.min];
+
     }
 
-    public void incrementBins(int binToIncrement){
-        this.bins[binToIncrement - this.start]++;
+    // create incrementBin(int binNumber)
+    // increment value at binNumber + 1
+    public void incrementBin(int binNumber){
+        this.possibleValues[binNumber - this.min]++;
     }
 
-    public int binLength(){
-        return stop - start + 1;
-    }
+
 }
